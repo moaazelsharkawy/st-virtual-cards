@@ -1,0 +1,320 @@
+/*=======================================================================================
+   ST Virtual Pay Cards - Frontend Styles (Updated)
+========================================================================================*/
+
+
+
+/*==============================
+   Portal Container (Centered)
+===============================*/
+.st-vpc-portal {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/*==============================
+   Header and Balance Area
+===============================*/
+.st-vpc-header {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.st-vpc-header h2,
+.st-vpc-header h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.st-vpc-balance {
+    width: 100%;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+.st-vpc-balance span {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+.st-vpc-balance strong {
+    font-size: 1.4rem;
+    color: #2e2e2e;
+}
+
+/*==============================
+   Create Section (Hidden)
+===============================*/
+.st-vpc-create-section {
+    display: none !important;
+}
+
+/*==============================
+   Deposit Section
+===============================*/
+.st-vpc-deposit-section {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    text-align: right;
+}
+.st-vpc-deposit-section p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+.merchant-address-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    border: 2px dashed #6B46C1;
+    border-radius: 8px;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    word-break: break-all;
+}
+#st-vpc-deposit-address {
+    font-family: monospace;
+    color: #4a148c;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+#st-vpc-deposit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+#st-vpc-signature {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+}
+#st-vpc-deposit-form button {
+    background: #6B46C1;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+#st-vpc-deposit-form button:hover {
+    background: #553C9A;
+}
+
+/*==============================
+   Alert Messages
+===============================*/
+.st-vpc-alert.warning {
+    background: #FFF3CD;
+    color: #856404;
+    padding: 1rem;
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/*==============================
+   Card Grid Layout (Centered)
+===============================*/
+.st-vpc-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/*==============================
+   Virtual Card Item
+===============================*/
+.st-vpc-card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 360px;
+    margin-left: -30px;
+}
+
+/*==============================
+   Virtual Card Style (Base)
+===============================*/
+.st-vpc-card {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 280px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+.st-vpc-card:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+.st-vpc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #6B46C1, #9F7AEA);
+}
+
+/*==============================
+   Virtual Card Flip Styles
+===============================*/
+.st-vpc-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.st-vpc-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+.st-vpc-card-front, .st-vpc-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.st-vpc-card-front {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    justify-content: space-between;
+    padding: 1rem;
+
+}
+.st-vpc-card-back {
+       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: rotateY(180deg);
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/*==============================
+   Card Logo & Number
+===============================*/
+.st-vpc-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.st-vpc-logo-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #6B46C1;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.3rem;
+}
+.st-vpc-logo-text {
+    font-size: 0.9rem;
+    color: #ffffff !important;    /* made full white */
+    font-weight: 600;             /* stronger weight */
+}
+.st-vpc-number {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 1rem;
+    color: #fff;
+}
+.st-vpc-number .st-vpc-copy-card-number {
+    order: -1; /* copy-button on the left */
+}
+
+/*==============================
+   New Expiry on Front Face
+===============================*/
+.st-vpc-expiry-front {
+    position: static;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: justify;
+  margin-bottom: -10px;
+  margin-top:10px;
+}
+
+/*==============================
+   Cancel & Delete Buttons
+===============================*/
+.st-vpc-cancel,
+.st-vpc-delete {
+    margin: 0.5rem auto;
+}
+.st-vpc-cancel {
+    background: #e53e3e;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.st-vpc-cancel:hover {
+    background: #c53030;
+    transform: scale(0.98);
+}
+.st-vpc-delete {
+    background: transparent;
+    border: none;
+    color: #e53e3e;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0.3em;
+    border-radius: 50%;
+    transition: background 0.3s, color 0.3s;
+}
+.st-vpc-delete:hover {
+    background: rgba(229, 62, 62, 0.1);
+    color: #c53030;
+}
+.st-vpc-delete i {
+    pointer-events: none;
+}
